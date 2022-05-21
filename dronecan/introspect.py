@@ -39,16 +39,10 @@ def _to_json_compatible_object_impl(obj):
     elif isinstance(obj, ArrayValue):
         t = dronecan.get_dronecan_data_type(obj)
         if t.value_type.category == t.value_type.CATEGORY_PRIMITIVE:
-            def is_nice_character(ch):
-                if ch.is_printable() or ch.isspace():
-                    return True
-                if ch in b'\n\r\t':
-                    return True
-                return False
-
-            # Catch a string masquerading as an array
-            if t.is_string_like and all(map(is_nice_character, obj)):
+            try:
                 return obj.decode()
+            except (ValueError, UnicodeError):
+                pass
 
         # Return the array!
         output = []
