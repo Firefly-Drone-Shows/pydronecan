@@ -1,3 +1,4 @@
 [submodule "dsdl"]
 	path = dsdl
-	url = https://github.com/UAVCAN/dsdl
+	url = https://github.com/Firefly-Drone-Shows/DSDL.git
+	branch = 00bce3e35b3cdc7d747193c18489d7629f8ce996
