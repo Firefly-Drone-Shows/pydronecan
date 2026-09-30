@@ -29,6 +29,7 @@ class NodeMonitor(object):
             self.info = None
             self.monotonic_timestamp = None
             self._remaining_retries = NodeMonitor.MAX_RETRIES
+            self._info_requested_at = 0
 
         @property
         def discovered(self):
@@ -165,7 +166,6 @@ class NodeMonitor(object):
             new_entry = False
         except KeyError:
             entry = self.Entry()
-            entry._info_requested_at = 0
             self._registry[node_id] = entry
             new_entry = True
 
